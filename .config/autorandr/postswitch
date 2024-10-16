@@ -1,0 +1,5 @@
+#!/bin/bash -x
+
+sleep 2
+nitrogen --restore
+notify-send -i display "Display profile" "$AUTORANDR_CURRENT_PROFILE"

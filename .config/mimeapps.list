@@ -1,0 +1,25 @@
+[Added Associations]
+application/pdf=org.gnome.Evince.desktop;
+application/x-zerosize=code.desktop;nvim.desktop;
+application/sql=code.desktop;
+image/jpeg=org.xfce.ristretto.desktop;feh.desktop;
+image/png=org.xfce.ristretto.desktop;
+image/jpg=org.xfce.ristretto.desktop;feh.desktop;
+application/x-executable=Alacritty.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;
+
+[Default Applications]
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
+application/x-zerosize=nvim.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/ton=tonwallet.desktop
+x-scheme-handler/ssr=shadowsocks-electron.desktop
+x-scheme-handler/ss=shadowsocks-electron.desktop
+image/jpeg=org.xfce.ristretto.desktop
+application/x-executable=Alacritty.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop

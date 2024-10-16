@@ -1,0 +1,16 @@
+bar {
+	status_command $statusbar
+	colors {
+            separator  #202030
+            background #202030
+            statusline #80a0c0
+
+            #                  border  bg      text
+            focused_workspace  #202030 #303040 #90b0d0
+            active_workspace   #0000ff #00ff00 #ff0000
+            inactive_workspace #202030 #202030 #90b0d0
+            urgent_workspace   #202030 #204030 #90b0d0
+            binding_mode       #444444 #88aacc #333344
+	position $waybar_position
+	}
+}

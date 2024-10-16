@@ -1,0 +1,86 @@
+[theme]
+theme = "modern"
+[icons]
+icons = "material-nf"
+
+
+[[block]]
+block = "music"
+format = " $icon {$combo.str(max_w:25,rot_interval:0.5) $prev $play $next |} "
+
+[[block]]
+block = "custom"
+interval = 0.5
+command = ''' xset -q|grep LED| awk '{ if (substr ($10,5,1) == 1) print "RU"; else print "EN"; }' '''
+[[block.click]]
+button = 'left'
+cmd = 'xkb-switch -n'
+
+[[block]]
+block="external_ip"
+#format="{ip}"
+interval=1000
+
+[[block]]
+block = "sound"
+max_vol=150
+[[block.click]]
+button = 'left'
+cmd= "pavucontrol"
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+device_kind = "source"
+[[block.click]]
+button = 'left'
+cmd= "pavucontrol"
+#cmd= "xdotool key XF86AudioMicMute"
+
+[[block]]
+block = "amd_gpu"
+format = " $icon $utilization "
+format_alt = " $icon MEM: $vram_used_percents ($vram_used/$vram_total) "
+interval = 1
+
+[[block]]
+block = "cpu"
+format = " $icon $utilization "
+format_alt = " $icon$utilization$barchart $frequency "
+[[block.click]]
+button = 'right'
+#cmd="urxvtc -e htop"
+cmd="xfce4-terminal -e htop"
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "#{mem_used}/{mem_total}" #S{swap_used}/{swap_total}"
+format_alt = " $icon $mem_used_percents$mem_used/$mem_total "
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block="battery"
+driver="upower"
+interval=10
+format=" $icon $percentage $time "
+#charging_format=" $icon $percentage $time "
+#full_format=" $icon $percentage "
+#not_charging_format= " $icon $percentage $time "
+device="DisplayDevice"
+
+#[[block]]
+#block = "xrandr"
+#icons = true
+#resolution = true
+
+#[[block]]
+#block = "load"
+#format = "{1m}"
+
+[[block]]
+block = "time"
+interval = 1
+format = " $icon $timestamp.datetime(f:'%A %d/%m/%Y %R') "
+
