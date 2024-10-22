@@ -17,9 +17,16 @@ button = 'left'
 cmd = 'xkb-switch -n'
 
 [[block]]
-block="external_ip"
-#format="{ip}"
+block="custom"
+cycle=["echo ExtIP: $(curl eth0.me -s)", "echo IP is hiden"]
 interval=1000
+[block.theme_overrides]
+idle_bg = "#344cb8"
+idle_fg = "#ffffff"
+[[block.click]]
+button="left"
+action="cycle"
+
 
 [[block]]
 block = "sound"
