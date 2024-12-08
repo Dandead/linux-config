@@ -10,7 +10,10 @@
 - **nitrogen** (i3-wm) default wallpapers manager
 - **autorandr** (i3-wm) auto switching between configirations for one/two monitors
 - **arandr** (i3-wm) manage multiple displays
-- **lightdm** (xorg) dafault display manager (used for login)
+- **lightdm** (xorg) default display manager (used for login)
+- **betterlockscreen** (i3-wm) default lockscreen
+- **xss-lock** (Xorg) Managing session locking
+- **xautolock** (i3-wm) Managing auto-screenlocking
 
 ### Audio environment
 - **alsa** (sys) audio driver
