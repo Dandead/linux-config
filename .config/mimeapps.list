@@ -2,13 +2,22 @@
 application/pdf=org.gnome.Evince.desktop;
 application/x-zerosize=code.desktop;nvim.desktop;
 application/sql=code.desktop;
-image/jpeg=org.xfce.ristretto.desktop;feh.desktop;
-image/png=org.xfce.ristretto.desktop;
+image/jpeg=gimp.desktop;org.xfce.ristretto.desktop;feh.desktop;
+image/png=gimp.desktop;org.xfce.ristretto.desktop;
 image/jpg=org.xfce.ristretto.desktop;feh.desktop;
 application/x-executable=Alacritty.desktop;
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
+text/plain=code.desktop;
+text/x-python=code.desktop;
+video/x-matroska=vlc.desktop;google-chrome.desktop;
+image/svg+xml=google-chrome.desktop;
+application/json=code.desktop;
+application/octet-stream=code.desktop;
+image/webp=gimp.desktop;
+video/mp4=vlc.desktop;
 
 [Default Applications]
+application/pdf=org.gnome.Evince.desktop;
 text/html=google-chrome.desktop
 x-scheme-handler/http=google-chrome.desktop
 x-scheme-handler/https=google-chrome.desktop
@@ -23,3 +32,5 @@ x-scheme-handler/ss=shadowsocks-electron.desktop
 image/jpeg=org.xfce.ristretto.desktop
 application/x-executable=Alacritty.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
+x-scheme-handler/webcal=opera.desktop
+application/octet-stream=code.desktop

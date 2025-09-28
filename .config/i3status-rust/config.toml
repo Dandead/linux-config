@@ -16,17 +16,24 @@ command = ''' xset -q|grep LED| awk '{ if (substr ($10,5,1) == 1) print "RU"; el
 button = 'left'
 cmd = 'xkb-switch -n'
 
-[[block]]
-block="custom"
-cycle=["echo ExtIP: $(curl eth0.me -s)", "echo IP is hiden"]
-interval=1000
-[block.theme_overrides]
-idle_bg = "#344cb8"
-idle_fg = "#ffffff"
-[[block.click]]
-button="left"
-action="cycle"
+# [[block]]
+# block = "pomodoro"
+# notify_cmd = "notify-send '{msg}'"
+# blocking_cmd = false
+# [block.theme_overrides]
+# idle_bg = "#344cb8"
+# idle_fg = "#ffffff"
 
+# [[block]]
+# block="custom"
+# cycle=["echo ExtIP: $(curl eth0.me -s)", "echo IP is hiden"]
+# interval=1000
+# [block.theme_overrides]
+# idle_bg = "#344cb8"
+# idle_fg = "#ffffff"
+# [[block.click]]
+# button="left"
+# action="cycle"
 
 [[block]]
 block = "sound"
@@ -41,8 +48,8 @@ driver = "pulseaudio"
 device_kind = "source"
 [[block.click]]
 button = 'left'
-cmd= "pavucontrol"
-#cmd= "xdotool key XF86AudioMicMute"
+# cmd= "pavucontrol"
+cmd= "xdotool key XF86AudioMicMute"
 
 [[block]]
 block = "amd_gpu"

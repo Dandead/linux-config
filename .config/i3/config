@@ -48,7 +48,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -56,8 +56,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86AudioNext exec --no-startup-id playerctl next
@@ -79,18 +79,15 @@ bindsym $mod+Tab workspace back_and_forth
 # start a terminal
 # bindsym $mod+Return exec urxvtc
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+Return exec $term --role=floating
-#bindsym $mod+Shift+Return exec urxvtc --class=floating
+#bindsym $mod+Shift+Return exec $term --role=floating
+bindsym $mod+Shift+Return exec $term --class floating
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun -terminal $term -show-icons -icon-theme Dracula -run-shell-command '{terminal} -e zsh -ic "{cmd} && read"'
-
-# nitrogen restoring
-
-bindsym $mod+Shift+n exec --no-startup=id /usr/bin/nitrogen --restore
+#bindsym $mod+d exec --no-startup-id rofi -show drun -terminal $term -show-icons -icon-theme Dracula -run-shell-command '{terminal} -e zsh -ic "{cmd} && read"'
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-6/launcher.sh
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -262,8 +259,9 @@ client.background       #F8F8F2
 
 bar {
   position top
-  tray_output eDP
-#  tray_output HDMI-1
+#  tray_output eDP
+#  tray_output HDMI-A-0
+  tray_output primary
   status_command i3status-rs
 #  font pango: Source Code Pro Black, Font Awesome 6 Free, Babelstone Flags 10
   font pango: Source Code Pro Black, Babelstone Flags 11
@@ -321,14 +319,15 @@ bindsym Print exec flameshot gui
 
 # autostart
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/bin/nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id picom -b
 exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id syncthing serve --no-browser
 exec --no-startup-id flameshot
-exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
+# exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l"
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id sleep 3; sh /home/dandead/.fehbg
 
 # bind custom
 #bindsym $mod+F2 exec firefox
@@ -342,7 +341,7 @@ set $wsTel ""
 bindsym $mod+t workspace $wsTel
 bindsym $mod+Shift+t move container to workspace $wsTel
 assign [class="TelegramDesktop"] → $wsTel
-exec --no-startup-id telegram-desktop
+exec --no-startup-id Telegram
 
 set $wsDis ""
 bindsym $mod+g workspace $wsDis
@@ -371,7 +370,9 @@ assign [class="[Gg]oogle-chrome"] → $wsBrwsr
 
 ## FLOATING WINDOWS
 # enable floating for all windows with same role
+for_window [class="^.*"] focus output none
 for_window [window_role="^floating$"] floating enable
+for_window [class="floating"] floating enable
 for_window [window_role="[Pp]references"] floating enable
 for_window [title="[Pp]references"] floating enable
 for_window [class="[Pp]references"] floating enable
@@ -387,7 +388,8 @@ for_window [class="Ristretto"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 #for_window [class=""] floating enable
-
+for_window [class="nekoray"] floating enable
+for_window [class="nekobox"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
@@ -402,6 +404,7 @@ for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="pavucontrol"] floating enable
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
@@ -415,6 +418,7 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class="yandex-music"] floating enable
 
 # switch to workspace with urgent window automatically
 # for_window [urgent=latest] focus
